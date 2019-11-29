@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML5/NodeJs Server Template App</title>
+
+    <meta name="description" content="HTML5/NodeJs Server Template App">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="css/style_base.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/media.css">
+
+    <!-- This is the key CDN to pull jQuery from -->
+    <!-- To operate offline we may want these to load from a local source -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!--  Use our local libs for physics -->
+
+    <!-- Local styles -->
+    <style type="text/css">/* styles for the divs */</style>
+</head>
+<body>
+    <nav class="panel">
+        <p>Animating a web page (DOM) objects. View the source to learn more on how it works.</p>
+        <p>
+        DIVs are positioned with CSS3 transform so they are HW accelerated for perfomance.
+        It's even performant on iPhone and the iPad and allows rotation to be set.
+        </p>
+        <button id="resetButton">Reset</button>
+        <button id="removeText">Remove this text</button>
+        <button id="showDebugInfo">Show Debug Info</button>
+    </nav>
+
+    <header id="intro" class="main header">
+        <h2 id="page-title">AJAX Demo Client</h2>
+        <nav id='title' class='header container'>
+            <h3 class='content'>Nav Menu Area</h3>
+        </nav>
+    </header>
+    <div class="clearfix"><!-- clear --></div>
+
+    <section id='wrapper' class='main flex-container'>
+
+        <aside id='sidebar' class='main container flex-item'>
+            <div id='sidebar-data' class='content'>
+                <h4>Sidebar Area</h4>
+            </div>
+        </aside>
+
+        <div id='app-area' class='content container flex-item'>
+            <div id='game-screen'>
+                <h3>My main app area here</h3>
+                <div id='intro-screen'>
+                    <form id='nickname-form' method='POST' action='server/logon'>
+                        Name:
+                        <input type='text'   name='nickname' value='' />
+                        Password:
+                        <input type='password'  name='passwd' value='' />
+                        <input type='submit' name='action'    value='Submit' />
+                    </form>
+                </div>
+
+                <div id="test-form">
+                    <form id="validate-form" class="default-form"
+                            accept-charset="utf-8" method='POST' action='server/validate'>
+                        <input type="hidden" name="action" value="validate" />
+                        <input type="text" name="favorite_beverage" value="" placeholder="Favorite restaurant" />
+                        <input type="text" name="favorite_restaurant" value=""  placeholder="Favorite beverage" />
+                        <select name="gender">
+                            <option value="unknown" selected >Unknown</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        <input type="submit" name="validate" value="Validate" />
+                    </form>
+                </div>
+
+                <div id='results-area'></div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>This is debug info</p>
+        <form id="debug" class="" style="display: inline-block">
+            <input type="text" id="world-coords" name="world-coords" value="0,0" /><br />
+            <label name="mouse-coords" value="Mouse is at these world coords" /><br />
+            <input type="text" id="mouse-coords" name="mouse-coords" value="0,0" />
+        </form>
+    </footer>
+
+    <script type="module" src="./scripts/index.js"></script>
+</body>
+
+</html>

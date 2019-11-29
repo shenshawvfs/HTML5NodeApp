@@ -1,0 +1,219 @@
+/**
+ * CSS Styles for VFS Demo App
+ *
+ * @Copyright (C)2014-2019, Kibble Online Inc., In cooperation with Vancouver Film School
+ * @author: Scott Henshaw
+ * @Contributor: Clinton Ramonida
+ */
+
+/* DEFAULTS */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(194, 193, 193);
+}
+
+.lazyload, .content-container{
+    display: block !important;
+}
+
+/* GRID FRAME/CONTAINER (PARENT) */
+.grid-frame {
+    display: grid;
+    grid-gap: 5px;
+    grid-template:
+        [row1-start] "navbar navbar navbar navbar" 50px [row1-end]
+        [row2-start] "headbar headbar headbar headbar" 100px [row2-end]
+        [row3-start] "sidecontent thecontent thecontent thecontent" 720px [row3-end]
+        [row4-start] "footcontent footcontent footcontent footcontent" 80px [row4-end];
+}
+
+/* GRID AREAS/ITEMS (CHILDREN) */
+.area {
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 5px;
+}
+
+.grid-header {
+    grid-area: headbar;
+}
+
+.grid-nav {
+    grid-area: navbar;
+}
+
+.grid-content {
+    grid-area: thecontent;
+    margin: 5px;
+}
+
+.grid-side {
+    grid-area: sidecontent;
+    margin: 5px;
+}
+
+.grid-foot {
+    grid-area: footcontent;
+}
+
+/* GRID CONTAINER CHILD (CHILD BUT A CONTAINER) */
+.grid-frame-child {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(4, 100px [row-start]);
+}
+
+/* GRID AREA FOR "GRID CONTAINER CHILD" */
+.area-child{
+    border-style: solid;
+    border-width: 3px;
+    border-color: gray;
+    border-radius: 5px;
+}
+
+.grid-results{
+    grid-area: results;
+    grid-column: 2/8;
+    grid-row: 1/4;
+}
+
+#results-area{
+    position: absolute;
+}
+
+.grid-buttons{
+    grid-area: buttons;
+    grid-column: 2/8;
+    grid-row: 4/5;
+}
+
+/* FLEX CONTAINER (PARENT) */
+.flexbox {
+    display: flex;
+    background-color: rgb(241, 244, 247);
+    height: 100%;
+}
+
+/* navigation bar */
+
+.menu{
+    background-color: #333;
+}
+
+ul {
+    display: flex;
+    justify-content: flex-start;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+/* header */
+.header {
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* content */
+.content {
+    flex-direction: column;
+}
+
+/* sidebar */
+.sidebar {
+    flex-direction: column;
+}
+
+/* footer */
+.footer {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.buttons {
+    justify-content: center;
+    align-items: center;
+}
+
+/* FLEX ITEMS (CHILDREN) */
+.flexitem{
+    align-self: center;
+}
+
+.spacer{
+    height: 80px;
+}
+
+.btn{
+    background-color: white;
+    color: black;
+    border: 2px solid black; /* Black */
+    height: 40px;
+    width: 80px;
+    margin: 2px;
+}
+
+.btn:hover {
+    background-color: #555555;
+    color: white;
+}
+
+h1 {
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+}
+
+h2 {
+    border-style: solid;
+    border-width: 3px;
+    border-color: royalblue;
+    margin: 3px;
+}
+
+h3{ /* not a flex item */
+    margin: 5px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: rosybrown;
+}
+
+ /**
+ *  @license:
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */

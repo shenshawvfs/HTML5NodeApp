@@ -1,0 +1,46 @@
+ /**
+ * Media Query CSS Styles for VFS Demo App
+ *
+ * @Copyright 2018, Vancouver Film School, In cooperation with Scott Henshaw.
+ * @Author: Clinton Ramonida
+ * 
+ */
+
+ /* BASIC MOBILE APP LAYOUT USING GRID */
+ /* 
+    (max-width: XXXpx) means: 
+        -max = "desktop first design" (everything inside would be changes to mobile screen)
+        -min = "mobile first design" (everything inside would be changes to desktop screen)
+
+    Since we're using our main style.css as a "Desktop first design"
+    Only put the changes here for whatever you want to change in your mobile screen.
+*/
+ @media only screen and (max-width: 812px) {
+     
+    /* Since we have a smaller screen, we need bigger fonts */
+    body {
+        font-size: 25px;
+    }
+
+    /* GRID FRAME/CONTAINER */
+    .grid-frame {
+        display: grid;
+        grid-gap: 5px;
+        grid-template: 
+            [row1-start] "navbar" 50px [row1-end] 
+            [row2-start] "headbar" 200px [row2-end] 
+            [row3-start] "thecontent" 1000px [row3-end] 
+            [row4-start] "sidecontent" 150px [row4-end] 
+            [row5-start] "footcontent" 100px [row5-end];
+    }
+
+    /* Since we have a smaller screen, we need better spacing */
+    .spacer{
+        height: 150px;
+    }
+
+    #results-area{
+        height: 300px;
+        width: 230px;
+    }
+}
