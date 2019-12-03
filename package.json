@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node -r esm ./simple_server.js",
         "live": "nodemon --inspect -r esm ./simple_server.js",
-        "server": "node ./simple-server.js",
+        "server": "nodemon -r esm ./simple_server.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Kibble Online Inc",

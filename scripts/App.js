@@ -24,7 +24,8 @@ export default class App {
         // Do some initialization of the member variables for the app
         let my = this.__private__ = {
             done:   false,
-            userId: 0
+            userId: 0,
+            dataFromForm: {}
 	    };
 
         // Define the Event handlers for the app
@@ -53,54 +54,77 @@ export default class App {
              resolved at run time
              */
             event.preventDefault();
+            this.validate( event )
+                .then( response => {
+                    this.dataFromForm = response.payload;
+                });
+        });
+    }
+
+    validate( event ) {
+
+        return new Promise(( resolve, reject ) => {
 
             let requestParams = $(event.target).serialize();
 
-            // Note: the trailing slash IS important
-            $.post('/api/validate/', requestParams )
+            $.post('/api/validate', requestParams )
                 .then( jsonResponse => {
                     // this callback is triggered WHEN we get a response
                     let response = $.parseJSON( jsonResponse );
 
                     if (response.error)
-                        return;
+                        reject( response );
 
                     // only get this if the response is error free
-                    let data = response.payload;
-
-                    // compose the view markup based on JSON data we recieved
-                    let markup = "Favorite beverage: " + data.favorite_beverage;
-                    markup += "<br />Favorite restaurant: " + data.favorite_restaurant;
-                    markup += "<br />Gender: " + data.gender;
-                    markup += "<br />JSON: " + data.json;
-
-                    // Display the markup in the result section
-                    $("#results-area").html( markup );
-
-                    // Pop an alert to let the user know that the result is computed
-                    console.log(`Form submitted successfully.\nReturned json: ${response.json}` );
+                    resolve( response.payload )
                 });
-            return false;
-        });
+        })
 	}
 
 	update() {
         // Update the app/simulation model
     	// is the app finished running?
     	let my = this.__private__;
-    	my.done = true;
+        this.validate( event )
+        .then( response => {
+
+            this.dataFromForm = response.payload;
+
+            console.log(`Form submitted successfully.<br />`);
+            console.log(`Returned json: ${response.json}` );
+        })
+        .catch( response => {
+
+            my.done = true;
+            console.log(`Form submit failes.<br />`);
+            console.log(`Returned json: ${response.json}` );
+        })
     }
 
     render() {
         // Refresh the view - canvas and dom elements
+        let my = this.__private__;
+        let form = my.dataFromForm;
+
+        // compose the view markup based on JSON data we recieved
+        let markup = "Favorite beverage: " + form.favorite_beverage;
+        markup += "<br />Favorite restaurant: " + form.favorite_restaurant;
+        markup += "<br />Gender: " + form.gender;
+        markup += "<br />JSON: " + form.json;
+
+        // Display the markup in the result section
+        $("#results-area").html( markup );
     }
 
 	run() {
         // Run the app
 	    // One way to make private things easier to read as members
         let my = this.__private__;
+        const LONG_POLL = 5000;
+        let timer = window.setInterval( time => {
 
-        this.update();
-        this.render();
+            this.update();
+            this.render();
+        }, LONG_POLL)
 	}
 }  // Run the unnamed function and assign the results to app for use.
