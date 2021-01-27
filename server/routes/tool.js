@@ -1,10 +1,10 @@
-const Express = require('express');
+import Express from 'express'
 const Router = Express.Router();
 
 /* GET users listing. */
 Router.get('/tool', (req, res, next) => {
 
-    res.send('respond with a resource');
-});
+    res.send('respond with a resource')
+})
 
-module.exports = Router;
+export default Router;

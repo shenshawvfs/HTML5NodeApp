@@ -4,13 +4,13 @@
     "description": "HTML5 AJAX App with NodeJS server",
     "main": "index.js",
     "scripts": {
-        "start": "node -r esm ./simple_server.js",
-        "live": "nodemon --inspect -r esm ./simple_server.js",
-        "server": "nodemon -r esm ./simple_server.js",
+        "simple": "node -r esm ./simple_server.js",
+        "simple-live": "nodemon --inspect -r esm ./simple_server.js",
+        "server": "nodemon --inspect -r esm ./server.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Kibble Online Inc",
-    "license": "GPL-3.0-or-later",
+    "license": "MIT",
     "dependencies": {
         "bcrypt": "^5.0.0",
         "cookie-parser": "^1.4.4",

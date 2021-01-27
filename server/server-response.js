@@ -8,9 +8,9 @@
  */
 'use strict';
 
-class ServerResponse {
+export default class ServerResponse {
 
-    constructor( error = 0, errMsg = "No Error" ) {
+    constructor(error = 0, errMsg = "No Error") {
 
         let my = this.__private__ = {
             name: "",
@@ -19,13 +19,13 @@ class ServerResponse {
             error,
             errMsg,
         }
-        this.update( error, errMsg );
-        this.payload = {};  // use a an object so it can be serialized easily
+        this.update(error, errMsg);
+        this.payload = {}; // use a an object so it can be serialized easily
     }
 
-    set name( filename ) { this.__private__.name = filename }
+    set name(filename) { this.__private__.name = filename }
 
-    update( errorCode = 0, errorMessage = "No Error", dataToSend = {} ) {
+    update(errorCode = 0, errorMessage = "No Error", dataToSend = {}) {
 
         let my = this.__private__;
 
@@ -35,7 +35,5 @@ class ServerResponse {
         my.bytes = my.payload.length;
     }
 
-    serialized() { return JSON.stringify( this.__private__ ) }
+    serialized() { return JSON.stringify(this.__private__) }
 }
-
-module.exports = ServerResponse;

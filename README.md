@@ -4,11 +4,9 @@ base template for HTML5/CSS3 app using jQuery. Update and go. Client & PHP Serve
 
 Fully ES2018 compatible JS Objects with AJAX samples using fetch, async/await and JQuery post/get.  Setup the template by copying all the files to a new folder.
 
-## Download the archive from GitHub link
+## Clone the repo from GitHub link
 
-Open the zip archive and extract the contents into a folder (name the folder the name of your app)
-- Rookie mistake: Extract the download from Github to a folder called
-```/HTML5NodeApp-master```
+    git clone https://github.com/shenshawvfs/HTML5NodeApp.git <my-local-folder>
 
 There are 2 main apps/servers here. The ```simple_server.js``` file uses raw node ```.sendFile()``` methods to respond to post and get requests. The second uses a more sophisticated routing scheme to render views and server edges.
 
