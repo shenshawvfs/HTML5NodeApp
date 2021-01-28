@@ -54,14 +54,40 @@ export default class App {
              resolved at run time
              */
             event.preventDefault();
-            this.validate( event )
-                .then( response => {
-                    this.dataFromForm = response.payload;
-                });
-        });
+            this.__validate( event )
+                .then( response => response.payload )
+                .then( data => this.__success( data ))
+                .catch( response => {
+
+                    my.done = true;
+                    console.log(`Form submit failes.<br />`);
+                    console.log(`Returned json: ${response.json}` );
+                })
+            })
     }
 
-    validate( event ) {
+	run() {
+        // Run the app
+	    // One way to make private things easier to read as members
+        let my = this.__private__;
+        const LONG_POLL = 5000;
+        let timer = window.setInterval( time => {
+
+            this.__update();
+            this.__render();
+
+        }, LONG_POLL )
+	}
+
+    __success( data ) {
+
+        this.dataFromForm = data;
+
+        console.log(`Form submitted successfully.<br />`);
+        console.log(`Returned json: ${data.json}` );
+    }
+
+    __validate( event ) {
 
         return new Promise(( resolve, reject ) => {
 
@@ -81,27 +107,14 @@ export default class App {
         })
 	}
 
-	update() {
+	__update() {
         // Update the app/simulation model
     	// is the app finished running?
     	let my = this.__private__;
-        this.validate( event )
-        .then( response => {
-
-            this.dataFromForm = response.payload;
-
-            console.log(`Form submitted successfully.<br />`);
-            console.log(`Returned json: ${response.json}` );
-        })
-        .catch( response => {
-
-            my.done = true;
-            console.log(`Form submit failes.<br />`);
-            console.log(`Returned json: ${response.json}` );
-        })
     }
 
-    render() {
+    // Internal Methods
+    __render() {
         // Refresh the view - canvas and dom elements
         let my = this.__private__;
         let form = my.dataFromForm;
@@ -116,15 +129,4 @@ export default class App {
         $("#results-area").html( markup );
     }
 
-	run() {
-        // Run the app
-	    // One way to make private things easier to read as members
-        let my = this.__private__;
-        const LONG_POLL = 5000;
-        let timer = window.setInterval( time => {
-
-            this.update();
-            this.render();
-        }, LONG_POLL)
-	}
 }  // Run the unnamed function and assign the results to app for use.
