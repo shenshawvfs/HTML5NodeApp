@@ -1,18 +1,18 @@
 /**
  * FileList
  *
- * @copyright: (C) 2014-2019 Kibble Online Inc in cooperation with Vancouver Film School. All Rights Reserved.
+ * @copyright: (C) 2014-2022 Kibble Online Inc in cooperation with Vancouver Film School. All Rights Reserved.
  * @author: Scott Henshaw {@link mailto:shenshaw@vfs.com}
  * @version: 1.2.0
  *
  */
 'use strict';
 
-const Path = require('path');
-const FS = require('fs');
+import Path from 'path';
+import FS from 'fs';
 const FileSystem = FS.promises;
 
-class FileList {
+export default class FileList {
 
     constructor( userid = "test_user",  relativePath = "") {
         this.relativePath = relativePath;
@@ -41,8 +41,4 @@ class FileList {
                 })
         })
     }
-
 }
-
-module.exports = FileList;
-

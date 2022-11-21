@@ -27,6 +27,7 @@ export default class App {
             userId: 0
 	    };
 
+
         // Define the Event handlers for the app
         $('#nickname-form').on('submit', event => {
             event.preventDefault();
@@ -36,14 +37,14 @@ export default class App {
             $.post('/api/login/', requestParams)
                 .then( jsonResponse => {
                     // this callback is triggered WHEN we get a response
-                    var response = $.parseJSON( jsonResponse );
+                    let response = $.parseJSON( jsonResponse );
 
                     if (!response.error) {
 
                         my.userId = response.payload.id;
                         $('#results-area').html(`Welcome ${response.payload.nickname}, ${response.errMsg} <br/>`);
                     }
-                });
+                })
         });
 
         $("#validate-form").on('submit', event => {
@@ -83,6 +84,7 @@ export default class App {
             return false;
         });
 	}
+
 
 	update() {
         // Update the app/simulation model

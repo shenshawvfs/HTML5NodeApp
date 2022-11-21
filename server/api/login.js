@@ -1,4 +1,4 @@
-const Express = require('express');
+import Express from 'express';
 const Router = Express.Router();
 
 /* POST users listing. */
@@ -7,4 +7,4 @@ Router.post('/api/login', (req, res, next) => {
     res.send('respond with a resource');
 });
 
-module.exports = Router;
+export default Router;

@@ -1,12 +1,13 @@
 {
     "name": "html5nodeapp",
+    "type": "module",
     "version": "1.0.0",
     "description": "HTML5 AJAX App with NodeJS server",
     "main": "index.js",
     "scripts": {
-        "start": "node -r esm ./simple_server.js",
-        "live": "nodemon --inspect -r esm ./simple_server.js",
-        "server": "node ./simple-server.js",
+        "start": "node -r esm ./server.js",
+        "live": "nodemon --inspect ./server.js",
+        "server": "node ./server.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Kibble Online Inc",

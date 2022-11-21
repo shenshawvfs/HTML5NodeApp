@@ -18,7 +18,7 @@ Start with the ```simple_server```...
     ```json
     % npm install
     ```
-2. Run the appto verify the client works
+2. Run the app to verify the client works
     ```
     % npm run start
     ```

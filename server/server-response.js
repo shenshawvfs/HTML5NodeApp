@@ -1,14 +1,14 @@
 /**
  * ServerResponse
  *
- * @copyright: (C) 2014-2019 Kibble Online Inc in cooperation with Vancouver Film School. All Rights Reserved.
+ * @copyright: (C) 2014-2022 Kibble Online Inc in cooperation with Vancouver Film School. All Rights Reserved.
  * @author: Scott Henshaw {@link mailto:shenshaw@vfs.com}
  * @version: 1.2.0
  *
  */
 'use strict';
 
-class ServerResponse {
+export default class ServerResponse {
 
     constructor( error = 0, errMsg = "No Error" ) {
 
@@ -37,5 +37,3 @@ class ServerResponse {
 
     serialized() { return JSON.stringify( this.__private__ ) }
 }
-
-module.exports = ServerResponse;
