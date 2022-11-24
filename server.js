@@ -14,7 +14,6 @@ import { fileURLToPath } from 'url'
 
 const PORT = 4000;
 
-const PORT = 3000;
 const __filename = fileURLToPath( import.meta.url );
 const __dirname = Path.resolve();
 
