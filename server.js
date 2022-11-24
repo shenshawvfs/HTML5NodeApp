@@ -10,9 +10,13 @@ import CORS from 'cors'
 import Path from 'path'
 import HTTP from 'http'
 import FileSystem from 'fs'
+import { fileURLToPath } from 'url'
 
 const PORT = 4000;
 
+const PORT = 3000;
+const __filename = fileURLToPath( import.meta.url );
+const __dirname = Path.resolve();
 
 // Helper classes for use within the server
 import CrossOriginConfig from './server/corsConfig'
@@ -32,6 +36,7 @@ class Server {
 
         const crossOrigin = new CrossOriginConfig();
 
+        this.router = Express.Router();
         this.api
             .use( crossOrigin.cors ).options('/*', crossOrigin.header )
             .use( Express.json() )

@@ -1,7 +1,11 @@
-/*
-Node Express Server (MEVN Stack)
-Copyright (c) 2019-2020. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
-*/
+/**
+ * ServerResponse
+ *
+ * @copyright: (C) 2014-2022 Kibble Online Inc in cooperation with Vancouver Film School. All Rights Reserved.
+ * @author: Scott Henshaw {@link mailto:shenshaw@vfs.com}
+ * @version: 1.2.0
+ *
+ */
 'use strict';
 
 export default class Result {

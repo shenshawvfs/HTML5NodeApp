@@ -1,7 +1,11 @@
-/*
-Node Express Server (MEVN Stack)
-Copyright (c) 2019-2020. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
-*/
+/**
+ * FileList
+ *
+ * @copyright: (C) 2014-2022 Kibble Online Inc in cooperation with Vancouver Film School. All Rights Reserved.
+ * @author: Scott Henshaw {@link mailto:shenshaw@vfs.com}
+ * @version: 1.2.0
+ *
+ */
 'use strict';
 
 import Path from 'path'
@@ -37,11 +41,4 @@ export default class FileList {
                 })
         })
     }
-
-
-    myThing() {
-
-        return new Promise(( resolve,reject )=>{})
-    }
-
 }
