@@ -18,12 +18,12 @@ const __filename = fileURLToPath( import.meta.url );
 const __dirname = Path.resolve();
 
 // Helper classes for use within the server
-import CrossOriginConfig from './server/corsConfig'
-import Payload from './server/Result'
+import CrossOriginConfig from './server/corsConfig.js'
+import Payload from './server/Result.js'
 
-import Index from './server/index'
-import Tools from './server/api/tools'
-import Authentication from './server/api/authenticate'
+import Index from './server/index.js'
+import Tools from './server/api/tools.js'
+import Authentication from './server/api/authenticate.js'
 
 class Server {
 

@@ -36,9 +36,7 @@ export default class App {
             // Do your thing here when the user presses the submit button on this form.
             let requestParams = $(event.target).serialize();
             $.post('/api/login/', requestParams)
-                .then( jsonResponse => {
-                    // this callback is triggered WHEN we get a response
-                    let response = $.parseJSON( jsonResponse );
+                .then( response => {
 
                     if (!response.error) {
 
@@ -74,8 +72,8 @@ export default class App {
         const LONG_POLL = 5000;
         let timer = window.setInterval( time => {
 
-            this.__update();
-            this.__render();
+            this.#__update();
+            this.#__render();
 
         }, LONG_POLL )
 	}
@@ -109,14 +107,14 @@ export default class App {
 	}
 
 
-	update() {
+	#__update() {
         // Update the app/simulation model
     	// is the app finished running?
     	let my = this.__private__;
     }
 
     // Internal Methods
-    __render() {
+    #__render() {
         // Refresh the view - canvas and dom elements
         let my = this.__private__;
         let form = my.dataFromForm;

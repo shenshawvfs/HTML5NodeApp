@@ -11,7 +11,15 @@ import Path from 'path'
 
 Router.post('/login', ( request, response, next ) => {
 
-    response.send('respond with a resource')
+    const result = {
+        error: "OK",
+        code: 0,
+        payload: {
+            ...request.body,
+            errMsg: "respond with a resource"
+        }
+    }
+    response.send( result )
 });
 
 Router.post('/logout', ( request, response, next ) => {
