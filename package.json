@@ -15,7 +15,7 @@
     "author": "Kibble Online Inc",
     "license": "MIT",
     "dependencies": {
-        "bcrypt": "^5.0.0",
+        "bcrypt": "^5.1.0",
         "cookie-parser": "^1.4.4",
         "cors": "^2.8.5",
         "esm": "^3.2.25",
