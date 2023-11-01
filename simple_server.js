@@ -1,13 +1,17 @@
-const Express = require('express');
-const HTTP = require('http');
-const Path = require('path');
-const Encrypt = require('bcrypt');
+import Express from 'express';
+import HTTP from 'http';
+import Path from 'path';
+import Encrypt from 'bcrypt';
+import * as url from 'url';
+
+const __filename = url.fileURLToPath( import.meta.url );
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url ));
 
 const PORT = 3000;
 
 // Helper classes for use within the server
-const ServerResponse = require('./server/server-response.js');
-const FileList = require('./server/file-list');  // File management helper
+import Result from './server/Result.js';
+import FileList from './server/FileList.js';  // File management helper
 
 class Server {
 
@@ -63,7 +67,7 @@ class Server {
             fill this dictionary with attribute => value pairs, then
             encode as a JSON string, then echo back to caller
             */
-            let data = new ServerResponse( -1, "Error: invalid parameters" );
+            let data = new Result( -1, "Error: invalid parameters" );
 
             // Do what you need to do with the info. The following are some examples.
             // This is the real set of actual things we use
@@ -101,7 +105,7 @@ class Server {
 
             // one more time, without all the long winded comments...
             let params = request.body;
-            let data = new ServerResponse( -1, "Error: Missing folder or files" );
+            let data = new Result( -1, "Error: Missing folder or files" );
 
             let payload = { // actual data the client asked for
                 nickName: params.nickName,
@@ -116,7 +120,7 @@ class Server {
         this.api.post('/api/validate', ( request, response ) => {
 
             let params = request.body;
-            let data = new ServerResponse( -1, "Error: Invalid Data" );
+            let data = new Result( -1, "Error: Invalid Data" );
 
             let payload = params;  // Just in this demo case, make a copy of the parameters
             if ( payload.favorite_beverage != "" &&
