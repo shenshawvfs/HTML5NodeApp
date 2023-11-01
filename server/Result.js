@@ -8,22 +8,28 @@
  */
 'use strict';
 
-export default class ServerResponse {
+export default class Result {
 
     constructor( error = 0, errMsg = "No Error" ) {
 
         let my = this.__private__ = {
             name: "",
             bytes: 0,
-            payload: {},
+            data: {},
             error,
             errMsg,
         }
         this.update( error, errMsg );
-        this.payload = {};  // use a an object so it can be serialized easily
     }
 
     set name( filename ) { this.__private__.name = filename }
+
+    code( errorCode = 0, errorMessage = "No Error" ) {
+        let my = this.__private__;
+
+        my.error = errorCode;
+        my.errMsg = errorMessage;
+    }
 
     update( errorCode = 0, errorMessage = "No Error", dataToSend = {} ) {
 
@@ -32,7 +38,7 @@ export default class ServerResponse {
         my.error = errorCode;
         my.errMsg = errorMessage;
         my.payload = dataToSend;
-        my.bytes = my.payload.length;
+        my.bytes = JSON.stringify( my.data ).length;  // rough debug only
     }
 
     serialized() { return JSON.stringify( this.__private__ ) }

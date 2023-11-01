@@ -4,10 +4,10 @@
  */
 'use strict';
 
-import App from './App.js';
+import App from './scripts/App.js'
 
 // MAIN Entrypoint.
 $(document).ready( event => {
 
-    (new App()).run();
-});
+    (new App()).run()
+})
